@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+  ~  NOTICE OF LICENSE
+  ~
+  ~   This source file is subject to the MIT License
+  ~   that is bundled with this package in the file LICENSE.txt.
+  ~   It is also available through the world-wide-web at this URL:
+  ~   http://opensource.org/licenses/mit-license.php
+  ~
+  ~  @author        Febin Thomas
+  ~  @copyright     Copyright (c) 2018
+  ~  @license       http://opensource.org/licenses/mit-license.php MIT License
+  -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+    	<add id="Febin_Cart::menu" title="CART" resource="Febin_Cart::menu" module="Febin_Cart" sortOrder="20"/>
+        <add id="Febin_Cart::cart" title="Customer Cart" module="Febin_Cart" sortOrder="10" parent="Febin_Cart::menu" action="qcustomer/cart" resource="Febin_Cart::cart"/>
+    </menu>
+</config>

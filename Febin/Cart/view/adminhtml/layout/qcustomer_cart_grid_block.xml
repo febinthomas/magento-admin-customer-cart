@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+
+<!--
+  ~  NOTICE OF LICENSE
+  ~
+  ~   This source file is subject to the MIT License
+  ~   that is bundled with this package in the file LICENSE.txt.
+  ~   It is also available through the world-wide-web at this URL:
+  ~   http://opensource.org/licenses/mit-license.php
+  ~
+  ~  @author        Febin Thomas
+  ~  @copyright     Copyright (c) 2018
+  ~  @license       http://opensource.org/licenses/mit-license.php MIT License
+  -->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="qcustomer_cart.grid.container">
+            <block class="Magento\Backend\Block\Widget\Grid" name="qcustomer_cart.grid" as="grid">
+                <arguments>
+                    <argument name="id" xsi:type="string">cartGrid</argument>
+                    <argument name="dataSource" xsi:type="object">Febin\Cart\Model\ResourceModel\Cart\Collection</argument>
+                    <argument name="default_sort" xsi:type="string">id</argument>
+                    <argument name="default_dir" xsi:type="string">ASC</argument>
+                    <argument name="save_parameters_in_session" xsi:type="boolean">true</argument>
+                    <argument name="use_ajax" xsi:type="boolean">true</argument>
+                    <argument name="grid_url" xsi:type="url" path="*/*/grid">
+                        <param name="_current">1</param>
+                    </argument>
+                </arguments>
+                <block class="Magento\Backend\Block\Widget\Grid\Export" name="qcustomer_cart.grid.export" as="grid.export">
+                    <arguments>
+                        <argument name="exportTypes" xsi:type="array">
+                            <item name="csv" xsi:type="array">
+                                <item name="urlPath" xsi:type="string">*/*/exportCsv</item>
+                                <item name="label" xsi:type="string" translate="true">CSV</item>
+                            </item>
+                            <item name="excel" xsi:type="array">
+                                <item name="urlPath" xsi:type="string">*/*/exportXml</item>
+                                <item name="label" xsi:type="string" translate="true">Excel XML</item>
+                            </item>
+                        </argument>
+                    </arguments>
+                </block>
+                <block class="Magento\Backend\Block\Widget\Grid\ColumnSet" name="qcustomer_cart.grid.columnSet" as="grid.columnSet">
+                    <arguments>
+                        <argument name="rowUrl" xsi:type="array">
+                            <item name="path" xsi:type="string">*/*/view</item>
+                            <item name="extraParamsTemplate" xsi:type="array">
+                                <item name="id" xsi:type="string">getEntityId</item>
+                            </item>
+                        </argument>
+                    </arguments>
+                    <block class="Magento\Backend\Block\Widget\Grid\Column" as="id">
+                        <arguments>
+                            <argument name="header" xsi:type="string" translate="true">Customer Id</argument>
+                            <argument name="id" xsi:type="string">entity_id</argument>
+                            <argument name="index" xsi:type="string">entity_id</argument>
+                        </arguments>
+                    </block>
+                    <block class="Magento\Backend\Block\Widget\Grid\Column" name="firstname" as="firstname">
+                        <arguments>
+                            <argument name="header" xsi:type="string" translate="true">First Name</argument>
+                            <argument name="index" xsi:type="string">firstname</argument>
+                            <argument name="id" xsi:type="string">firstname</argument>
+                        </arguments>
+                    </block>
+                    <block class="Magento\Backend\Block\Widget\Grid\Column" name="lastname" as="lastname">
+                        <arguments>
+                            <argument name="header" xsi:type="string" translate="true">Last Name</argument>
+                            <argument name="index" xsi:type="string">lastname</argument>
+                            <argument name="id" xsi:type="string">lastname</argument>
+                        </arguments>
+                    </block>
+                    <block class="Magento\Backend\Block\Widget\Grid\Column" name="email" as="email">
+                        <arguments>
+                            <argument name="header" xsi:type="string" translate="true">Email</argument>
+                            <argument name="index" xsi:type="string">email</argument>
+                            <argument name="id" xsi:type="string">email</argument>
+                        </arguments>
+                    </block>
+                    <block class="Magento\Backend\Block\Widget\Grid\Column" name="items" as="items">
+                        <arguments>
+                            <argument name="header" xsi:type="string" translate="true">Items</argument>
+                            <argument name="index" xsi:type="string">items</argument>
+                            <argument name="id" xsi:type="string">items</argument>
+                            <argument name="filter" xsi:type="boolean">false</argument>
+                            <argument name="sortable" xsi:type="boolean">false</argument>
+                        </arguments>
+                    </block>
+                    <block class="Magento\Backend\Block\Widget\Grid\Column" name="qtys" as="qtys">
+                        <arguments>
+                            <argument name="header" xsi:type="string" translate="true">Qtys</argument>
+                            <argument name="index" xsi:type="string">qtys</argument>
+                            <argument name="id" xsi:type="string">qtys</argument>
+                            <argument name="filter" xsi:type="boolean">false</argument>
+                            <argument name="sortable" xsi:type="boolean">false</argument>
+                        </arguments>
+                    </block>
+                    <block class="Magento\Backend\Block\Widget\Grid\Column" name="total_count" as="total_count">
+                        <arguments>
+                            <argument name="header" xsi:type="string" translate="true">Total Qtys</argument>
+                            <argument name="index" xsi:type="string">total_count</argument>
+                            <argument name="id" xsi:type="string">total_count</argument>
+                            <argument name="filter" xsi:type="boolean">false</argument>
+                            <argument name="sortable" xsi:type="boolean">false</argument>
+                        </arguments>
+                    </block>
+                </block>
+            </block>
+        </referenceBlock>
+    </body>
+</page>
